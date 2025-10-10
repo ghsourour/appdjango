@@ -1,14 +1,14 @@
 name: depoly app django
 on:
    push:
-     branche: [ main ]
+     branches: [ main ]
 jobs:
   build and test:
      runs-on: ubuntu-latest
-     
+
      steps:
       - name: chekout repostory
-        uses: actions/chekout@v4
+        uses: actions/checkout@v4
 
       - name: test code python
         uses: actions/setup-python@v4  
@@ -29,7 +29,6 @@ jobs:
       - name: build image docker
         with:
          image: ${{ secrets.DOCKER_IMAGE_NAME }}
-
         run: |
           docker build -t  ${{ secrets.DOCKER_IMAGE_NAME }} .
 
@@ -39,7 +38,7 @@ jobs:
       - name: scan avec trivy
         uses: aquasecurity/trivy-action@master
         with: 
-         image_ref: ${{ secrets.DOCKER_IMAGE_NAME }}
+         image-ref: ${{ secrets.DOCKER_IMAGE_NAME }}
          severity: LOW,MEDIUM,CRITICAL
          scanners: vuln
          ignore-unfixed: true

@@ -5,7 +5,8 @@ on:
 jobs:
   build and test:
      runs-on: ubuntu-latest
-     stpes:
+     
+     steps:
       - name: chekout repostory
         uses: actions/chekout@v4
 
@@ -47,5 +48,5 @@ jobs:
         run: |
          docker tag ${{ secrets.DOCKER_IMAGE_NAME }} ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest
          docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest
-         
+
          

@@ -6,6 +6,9 @@ ARG PYTHON_VERSION=3.13.1
 
 FROM python:${PYTHON_VERSION}-slim 
 
+RUN apt-get update && apt-get upgrade -y && \
+    rm -rf /var/lib/apt/lists/*
+
 ENV PYTHONDONTWRITEBYTECODE=1
 
 ENV PYTHONUNBUFFERED=1

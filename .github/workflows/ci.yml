@@ -27,8 +27,6 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: build image docker
-        with:
-         image: ${{ secrets.DOCKER_IMAGE_NAME }}
         run: |
           docker build -t  ${{ secrets.DOCKER_IMAGE_NAME }} .
 

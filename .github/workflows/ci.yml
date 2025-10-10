@@ -42,7 +42,7 @@ jobs:
          ignore-unfixed: true
 
       - name: Monitor Snyk project
-        uses: snyk/actions/setup@master
+        uses: snyk/actions/python@master
         continue-on-error: true
         env:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -51,7 +51,7 @@ jobs:
          args: --all-projects
 
       - name: Test Snyk vulnerabilities
-        uses: snyk/actions/setup@master
+        uses: snyk/actions/python@master
         env:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:

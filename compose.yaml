@@ -1,0 +1,32 @@
+
+services:
+
+
+  base:
+    image: postgres
+    environment:
+       POSTGRES_DB: bookstore
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+     - "5432:5432"
+  app:   
+    build: .
+    command: >
+      sh -c " python manage.py makemigrations &&
+              python manage.py migrate && 
+              python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - base    
+
+
+
+
+volumes:
+  db-data:
+
+   

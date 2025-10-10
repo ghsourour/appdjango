@@ -48,6 +48,7 @@ jobs:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
          command: monitor 
+         args: --all-projects
 
       - name: Test Snyk vulnerabilities
         uses: snyk/actions/node@master
@@ -55,6 +56,7 @@ jobs:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
          command: test 
+         args: --all-projects
         continue-on-error: true 
 
       - name: tag and pousser image dans docker hub 

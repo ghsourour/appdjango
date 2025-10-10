@@ -41,6 +41,14 @@ jobs:
          scanners: vuln
          ignore-unfixed: true
 
+      - name: Run Snyk to check for vulnerabilities
+        use: snyk/actions/node@master
+        continue-on-error: true
+        env:
+         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+         command: monitor 
+
       - name: tag and pousser image dans docker hub 
         run: |
          docker tag ${{ secrets.DOCKER_IMAGE_NAME }} ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest

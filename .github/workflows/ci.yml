@@ -42,7 +42,7 @@ jobs:
          ignore-unfixed: true
 
       - name: Run Snyk to check for vulnerabilities
-        use: snyk/actions/node@master
+        uses: snyk/actions/node@master
         continue-on-error: true
         env:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

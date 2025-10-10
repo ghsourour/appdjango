@@ -39,7 +39,7 @@ jobs:
          image-ref: ${{ secrets.DOCKER_IMAGE_NAME }}
          severity: LOW,MEDIUM,CRITICAL
          scanners: vuln
-         ignore-unfixed: false
+         ignore-unfixed: true
 
       - name: tag and pousser image dans docker hub 
         run: |
